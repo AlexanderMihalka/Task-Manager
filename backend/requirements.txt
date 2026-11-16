@@ -1,0 +1,16 @@
+fastapi~=0.162
+uvicorn[standard]~=0.54
+pydantic~=2.14
+pydantic-settings~=2.16
+email-validator~=2.3
+sqlalchemy~=2.1
+alembic~=1.20
+psycopg[binary]~=3.3
+python-jose~=3.5
+passlib[bcrypt]~=1.7.4
+# passlib 1.7.4 несумісний з bcrypt >= 4.1, тому версію зафіксовано
+bcrypt==4.0.1
+
+# тести
+pytest~=9.2
+httpx~=0.28

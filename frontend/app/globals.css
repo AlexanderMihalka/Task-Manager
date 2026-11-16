@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+/*
+  Палітра: приглушені, "пастельні" кольори, щоб інтерфейс не втомлював очі.
+  Теплий кремовий фон, шавлієвий акцент, м'які фони для статусів.
+*/
+@theme {
+  --color-page: #f6f3ed;
+  --color-surface: #fffdf9;
+  --color-line: #e8e2d6;
+  --color-ink: #3f4756;
+  --color-muted: #667085;
+
+  --color-primary: #4f8272;
+  --color-primary-hover: #447262;
+  --color-primary-soft: #e3efe9;
+
+  --color-danger: #a24848;
+  --color-danger-hover: #8f3d3d;
+  --color-danger-bg: #f8e3e1;
+
+  /* статуси */
+  --color-todo-bg: #e4ebf5;
+  --color-todo-fg: #3f5f8a;
+  --color-progress-bg: #fbeccb;
+  --color-progress-fg: #7d5a14;
+  --color-done-bg: #dcefe0;
+  --color-done-fg: #3a6b4b;
+
+  /* пріоритети */
+  --color-low-bg: #e9eef0;
+  --color-low-fg: #55666f;
+  --color-medium-bg: #fde6d6;
+  --color-medium-fg: #944f26;
+  --color-high-bg: #f6dcdf;
+  --color-high-fg: #9b3f4f;
+
+  --font-sans: ui-rounded, "Nunito", "Segoe UI", system-ui, -apple-system,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  background-color: var(--color-page);
+  background-image: radial-gradient(
+      60rem 30rem at 8% -10%,
+      #e6f0ea 0%,
+      transparent 60%
+    ),
+    radial-gradient(50rem 30rem at 100% 0%, #ece8f5 0%, transparent 55%);
+  background-attachment: fixed;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition focus:outline-none focus-visible:ring-4 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-hover focus-visible:ring-primary/25;
+  }
+  .btn-ghost {
+    @apply text-muted hover:bg-ink/5 hover:text-ink focus-visible:ring-ink/10;
+  }
+  .btn-outline {
+    @apply border border-line bg-surface text-ink hover:bg-page focus-visible:ring-ink/10;
+  }
+  .btn-danger {
+    @apply bg-danger text-white hover:bg-danger-hover focus-visible:ring-danger/25;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-line bg-surface px-3.5 py-2.5 text-sm text-ink transition placeholder:text-muted/70 focus:border-primary focus:ring-4 focus:ring-primary/15 focus:outline-none;
+  }
+  .input[aria-invalid="true"] {
+    @apply border-danger focus:border-danger focus:ring-danger/15;
+  }
+}
